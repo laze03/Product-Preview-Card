@@ -1,0 +1,183 @@
+// VARIABLES :
+$green-color : hsl(158, 36%, 37%);
+$bg-color: hsl(30, 38%, 92%);
+$title-color: hsl(212, 21%, 14%);
+$p-color: hsl(228, 12%, 48%);
+$white-color: #fff;
+
+$horizontal-space: 0;
+
+$font-size: 1.4rem;
+
+
+// MIXINS
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// BASE :
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $bg-color;
+  height: 100%;
+}
+
+// TYPOGRAPY
+.primary-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 1;
+
+  &-green {
+    color: $green-color;
+  }
+}
+
+.secondary-heading, p, .crossed-price{
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: $p-color;
+  font-size: $font-size;
+}
+
+.secondary-heading {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.crossed-price {
+  text-decoration: line-through;
+}
+
+.cta-btn {
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: $white-color;
+  font-size: $font-size;
+}
+
+// LAYOUT
+
+.product-section {
+    width: 64rem;
+    height: 45rem;
+    margin: auto;
+    margin-top: 13rem;
+}
+
+.row {
+  margin: 2rem 2rem;
+  max-width: 114rem;
+  @include clearfix;
+  border-radius: 1rem;
+  background-color: $white-color;
+  overflow: hidden;
+
+  .col-1-of-2 {
+    float: left;
+    height: 45rem;
+  }
+  &__img {
+    width: 50%;
+
+    &--desktop-image{
+      width: 100%;
+    }
+
+    &--mobile-image {
+      width: 0;
+    }
+  }
+  &__text {
+    width: 50%;
+    padding: 3rem;
+  }
+}
+
+//STYLING THE TEXT PART
+
+h1 {
+  margin-top: 1.6rem;
+}
+
+.section__text {
+  margin-top: 3rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  display: flex;
+  padding: 1rem 0;
+  align-items: center;
+  gap: 2.1rem;
+}
+
+.cta-btn {
+  display: flex;
+  margin: 2rem auto 0;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: $green-color;
+  padding: 1.6rem 0;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+    &:hover {
+    background-color: darken($green-color, 15%);
+    cursor: pointer;
+  }
+}
+
+.fa-cart-shopping {
+    padding-right: .7rem;
+  }
+
+@media (max-width: 650px) {
+
+  .product-section {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+  }
+
+  .row {
+    margin-top: 4rem;
+
+    .col-1-of-2 {
+      height: 100%;
+    }
+    &__img {
+      width: 100%;
+      margin-top: -2rem;
+
+      &--desktop-image{
+        width: 0;
+      }
+
+      &--mobile-image {
+        width: 100%;
+      }
+    }
+    &__text {
+      width: 100%;
+    }
+  }
+}
